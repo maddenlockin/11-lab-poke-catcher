@@ -7,19 +7,29 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
-    <title>      title        </title>
+    <title>Poke Catcher</title>
 </head>
 
 <body>
     <main>
-        <div class="ape"> hi🦧</div>
+        <label>
+            <input id="poke-1" type="radio" name="pokemon">
+            <img id="poke-img-1">
+        </label> 
+        <label>
+            <input id="poke-2" type="radio" name="pokemon">
+            <img id="poke-img-2">
+        </label>
+        <label>
+            <input id="poke-3" type="radio" name="pokemon">
+            <img id="poke-img-3">
+        </label>
+        <button id="catch-button">Catch 'em!</button>
 
-
-
-        
     </main>
 </body>
 
-<script type="module" src="./data/app.js"></script>
+<script type="module" src="./data/pokedex.js"></script>
+<script type="module" src="./app.js"></script>
 
 </html>
