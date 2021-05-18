@@ -2,19 +2,21 @@ import { findById } from "./utils.js";
 const Pokedex = 'Pokedex';
 
 export function getPokedex() {
-    const stringPokedex = localStorage.getItem(Pokedex);
+    const JSONPokedex = localStorage.getItem(Pokedex);
     
-    if (!stringPokedex) { return [] };
+    if (!JSONPokedex) { return [] };
     
-    const pokedex = JSON.stringify(newPokedex);
+    const pokedex = JSON.parse(JSONPokedex);
     
     return pokedex;
 };
-export function setPokedex() {
+// below takes in an object
+export function setPokedex(newPokedex) {
     const stringPokedex = JSON.stringify(newPokedex);
     
     localStorage.setItem(Pokedex, stringPokedex);
 };
+
 export function capturePokedex(selectedPokemonId) {
     const pokedex = getPokedex();
 
@@ -24,6 +26,7 @@ export function capturePokedex(selectedPokemonId) {
 
     setPokedex(pokedex);
 };
+
 export function encounterPokedex(selectedPokemonId) {
     const pokedex = getPokedex();
 
