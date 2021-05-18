@@ -1,7 +1,7 @@
 import rawPokeData from './data/pokedex.js';
-import { capturePokedex, encounterPokedex } from './local-storage-utils.js';
+import { capturePokedex, encounterPokedex, setPokedex, getPokedex } from './local-storage-utils.js';
 //grab DOM elements
-const button = document.querySelector('#catch');
+const button = document.querySelector('#catch-button');
 const radio1 = document.querySelector('#poke-1');
 const radio2 = document.querySelector('#poke-2');
 const radio3 = document.querySelector('#poke-3');
@@ -9,7 +9,21 @@ const img1 = document.querySelector('#poke-img-1');
 const img2 = document.querySelector('#poke-img-2');
 const img3 = document.querySelector('#poke-img-3');
 
+renderThreePokemon();
+
 //console.log(button, radio1, radio2, radio3, img1, img2, img3);
+button.addEventListener('click', () => {
+    
+    const selectedRadio = document.querySelector(':checked');
+    //console.log(selectedRadio);
+    if (selectedRadio) {
+        const selectedPokemonId = selectedRadio.value;
+        capturePokedex(selectedPokemonId);
+        //renderThreePokemon();
+    } else {
+        alert('pick a pokemon to catch!');
+    }
+});
 
 export function getRandomPokemon() {
     const randomIndex = Math.floor(Math.random() * rawPokeData.length);
@@ -17,6 +31,7 @@ export function getRandomPokemon() {
     const randomPokemon = rawPokeData[randomIndex];
 
     return randomPokemon;
+
 }
 
 export function renderThreePokemon() {
@@ -24,9 +39,9 @@ export function renderThreePokemon() {
     let poke2 = getRandomPokemon(); 
     let poke3 = getRandomPokemon(); 
 
-    //console.log(poke1);
-    //console.log(poke2);
-    //console.log(poke3);
+    // console.log(poke1);
+    // console.log(poke2);
+    // console.log(poke3);
 
     while (poke1.id === poke2.id || poke1.id === poke3.id || poke2.id === poke3.id) {
         poke1 = getRandomPokemon();
@@ -47,8 +62,3 @@ export function renderThreePokemon() {
     radio3.value = poke3.id;
 };
 
-button.addEventListener('click', () => {
-    const selectedRadio = document.querySelector(':checked');
-    const selectedPokemonId = selectedRadio.value;
-    renderThreePokemon();
-});

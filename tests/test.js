@@ -33,33 +33,23 @@ test('test findById', (expect) => {
 });
 
 test('setPokedex should take an object and put the stringified version into local storage under the key Pokedex', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
+
     setPokedex(someArray[0]);
+
     const expected = someArray[0];
     const stringPokedex = localStorage.getItem('Pokedex');
     const parsePokedex = JSON.parse(stringPokedex);
-    //Act 
-    // Call the function you're testing and set the result to a const
-    
-    //Expect
-    // Make assertions about what is expected versus the actual result
+
     expect.deepEqual(parsePokedex, expected);
 });
 
 test('getPokedex should get a parsed version of the pokedex from Local Storage', (expect) => {
-    //Arrange
-    // Set up your arguments and expectations
+    
     const stringPokedex = JSON.stringify(someArray);
     localStorage.setItem('Pokedex', stringPokedex);
-    // const expected = JSON.parse(localStorage.getItem('Pokedex'));
-    
-    //Act 
-    // Call the function you're testing and set the result to a const
+
     const actual = getPokedex();
 
-    //Expect
-    // Make assertions about what is expected versus the actual result
     expect.deepEqual(actual, someArray);
 });
 
