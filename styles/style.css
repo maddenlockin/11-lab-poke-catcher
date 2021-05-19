@@ -1,14 +1,25 @@
 body {
     font-family: 'Sora', sans-serif;
-    
+    background-image: url("https://previews.123rf.com/images/claudiodivizia/claudiodivizia1612/claudiodivizia161204233/68735956-green-grass-texture-useful-as-a-background-vertical.jpg");
+    /* border: 3px solid green; */
 }
 
 main {
     position: relative;
     height: 100vh;
-    display: grid;    
+    display: grid; 
+    justify-content: center;
+    align-items: center;  
 }
 button {
+    padding: 50px;
     margin: 10px;
-    
+
+}
+input{
+    display: none;
+}
+
+input:checked + img {
+    border: 3px solid cyan;
 }
