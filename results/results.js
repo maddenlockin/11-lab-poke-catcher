@@ -1,5 +1,6 @@
-import { mungeCaptured, mungeNames, mungeColors } from "./utils.js";
-import pokemon, { getPokedex } from "../local-storage-utils.js";
+import { mungeCaptured, mungeNames, mungeColors } from "./data-utils.js";
+import pokemon from "../data/pokedex.js";
+import { getPokedex } from "../local-storage-utils.js";
 
 let ctx = document.getElementById('myChart').getContext('2d');
 let resetButton = document.getElementById('reset-button');
@@ -7,19 +8,19 @@ let resetButton = document.getElementById('reset-button');
 const pokeDex = getPokedex();
 const names = mungeNames(pokeDex);
 //console.log(names);
-const capturedData = mungeCaptured(pokedex);
+const capturedData = mungeCaptured(pokeDex);
 //console.log(capturedData);
-const colors = mungeColors(pokedex);
+const colors = mungeColors(pokeDex);
 //console.log(colors);
 
 
 new Chart(ctx, {
     type: 'bar',
     data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        labels: names,
         datasets: [{
             label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            data: capturedData,
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
@@ -49,8 +50,9 @@ new Chart(ctx, {
 });
 
 resetButton.addEventListener('click', () => {
+    localStorage.clear();   
     //redirect home
-    window.locaiton.replace('/'); 
+    window.location.replace('/'); 
     //clear localstorage
-    setPokedex([]);      
+    
 });

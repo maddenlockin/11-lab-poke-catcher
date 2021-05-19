@@ -1,5 +1,6 @@
 import { findById } from '../utils.js';
-import pokemon from "./pokedex.js";
+import pokemon from "../data/pokedex.js";
+import { getPokedex } from "../local-storage-utils.js"
 
 export function mungeCaptured(pokemonArray) {
     // initialize an empty array

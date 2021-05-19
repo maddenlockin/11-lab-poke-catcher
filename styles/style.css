@@ -8,10 +8,7 @@ main {
     height: 100vh;
     display: grid;    
 }
-
-
-.ape {
-    font-size: 10em;
-    position: relative;
-    margin: auto;
+button {
+    margin: 10px;
+    
 }
