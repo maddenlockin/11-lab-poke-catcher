@@ -1,5 +1,7 @@
 import rawPokeData from './data/pokedex.js';
 import { capturePokedex, encounterPokedex, setPokedex, getPokedex } from './local-storage-utils.js';
+import { getTotalCaptured } from './results/data-utils.js';
+
 //grab DOM elements
 const button = document.querySelector('#catch-button');
 const radio1 = document.querySelector('#poke-1');
@@ -23,6 +25,12 @@ button.addEventListener('click', () => {
     } else {
         alert('pick a pokemon to catch!');
     }
+    const totalCaptured = getTotalCaptured();
+    if (totalCaptured >= 10) {
+        window.location.replace('/results');
+    } else {
+        renderThreePokemon();
+    }
 });
 
 export function getRandomPokemon() {
@@ -34,7 +42,7 @@ export function getRandomPokemon() {
 
 }
 
-export function renderThreePokemon() {
+function renderThreePokemon() {
     let poke1 = getRandomPokemon(); 
     let poke2 = getRandomPokemon(); 
     let poke3 = getRandomPokemon(); 
@@ -54,8 +62,8 @@ export function renderThreePokemon() {
     encounterPokedex(poke3.id);
 
     img1.src = poke1.url_image;
-    img2.src = poke1.url_image;
-    img3.src = poke1.url_image;
+    img2.src = poke2.url_image;
+    img3.src = poke3.url_image;
 
     radio1.value = poke1.id;
     radio2.value = poke2.id;
