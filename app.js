@@ -27,7 +27,7 @@ button.addEventListener('click', () => {
     }
     const totalCaptured = getTotalCaptured();
     if (totalCaptured >= 10) {
-        window.location.replace('/results');
+        window.location ='./results';
     } else {
         renderThreePokemon();
     }
