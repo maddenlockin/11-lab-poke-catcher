@@ -52,7 +52,7 @@ new Chart(ctx, {
 resetButton.addEventListener('click', () => {
     localStorage.clear();   
     //redirect home
-    window.location = '/'; 
+    window.location = './'; 
     //clear localstorage
     
 });
