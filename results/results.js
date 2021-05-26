@@ -10,7 +10,7 @@ const names = mungeNames(pokeDex);
 //console.log(names);
 const capturedData = mungeCaptured(pokeDex);
 //console.log(capturedData);
-const colors = mungeColors(pokeDex);
+//const colors = mungeColors(pokeDex);
 //console.log(colors);
 
 
@@ -52,7 +52,7 @@ new Chart(ctx, {
 resetButton.addEventListener('click', () => {
     localStorage.clear();   
     //redirect home
-    window.location.replace('/'); 
+    window.location = '/'; 
     //clear localstorage
     
 });
